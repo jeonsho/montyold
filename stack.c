@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- *push - Adds a new node with the specified integer value to the top of the stack.
+ *push - Adds a new node with the specified integer value to the top.
  *@stack: A double pointer to the top of the stack.
  *@n: An unsigned integer representing the value to be added to the stack.
  *Return: nothing
@@ -9,12 +9,7 @@
 
 void push(stack_t **stack, unsigned int n)
 {
-	stack_t * new_node;
-	
-	/*if (!isdigit(n)) {
-	     fprintf(stderr, "L%u: usage: push integer\n", n);
-	     exit(EXIT_FAILURE);
-	 }*/
+	stack_t *new_node;
 
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
@@ -64,7 +59,7 @@ void pall(stack_t **stack, unsigned int line_number)
 void free_stack(stack_t **stack)
 {
 	stack_t *current = *stack;
-	stack_t * next;
+	stack_t *next;
 
 	while (current != NULL)
 	{
