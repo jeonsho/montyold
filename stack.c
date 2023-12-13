@@ -11,10 +11,10 @@ void push(stack_t **stack, unsigned int n)
 {
 	stack_t * new_node;
 	
-	if (!isdigit(n)) {
+	/*if (!isdigit(n)) {
 	     fprintf(stderr, "L%u: usage: push integer\n", n);
 	     exit(EXIT_FAILURE);
-	 }
+	 }*/
 
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
