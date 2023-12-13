@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 		{
 			if (strcmp(opcode, "push") == 0)
 			{
-				value_str = strtok(NULL, " \t\n");
+				value_str = strtok(NULL, " $\t\n");
 				if (!is_valid_integer(value_str, line_number)) {
 				 }
 				if (value_str == NULL)
