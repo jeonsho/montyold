@@ -35,7 +35,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void(*f)(stack_t **stack, unsigned int line_number);
+	void(*f)(stack_t **stack, unsigned int line_numberi);
 
 } instruction_t;
 void push(stack_t **stack, unsigned int n);
@@ -50,4 +50,5 @@ void sub(stack_t **stack, unsigned int line_number);
 void my_div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
 #endif
