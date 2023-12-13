@@ -12,26 +12,15 @@
  */
 int is_valid_integer(const char *str, unsigned int line_number)
 {
-	int converted, i;
+	int converted;
 
 	if (str == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-for (i = 0; str[i]; i++)
-	{
-		if (str[i] == '-' && i == 0)
-			continue;
-		if (str[i] < '0' || str[i] > '9')
-		{
-			 fprintf(stderr, "L%d: usage: push integer\n", line_number);
-                exit(EXIT_FAILURE);
-		
-		}
-	}
 	converted = atoi(str);
-	if (converted == 0 && str[0] != '0')
+	if (converted == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
