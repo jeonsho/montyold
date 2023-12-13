@@ -86,8 +86,10 @@ void process_file(FILE *file, stack_t **stack)
 	{
 		line_number++;
 		opcode = strtok(line, " $\t\n");
-		value_str = strtok(NULL, " \t\n");
-		process_instruction(stack, opcode, value_str, line_number);
+		if (opcode != NULL && opcode[0] != '#') {
+			value_str = strtok(NULL, " \t\n");
+			process_instruction(stack, opcode, value_str, line_number);
+		}
 	}
 
 	free(line);
