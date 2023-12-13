@@ -3,6 +3,35 @@
 #include "monty.h"
 #include <string.h>
 #include <stdio.h>
+/**
+ *Validates whether a string is a valid integer.
+ *@str: The string to be validated.
+ *@line_number: Line number for error reporting.
+ *Return:
+ * - Returns 1 if the string is a valid integer.
+ * - Returns 0 otherwise.
+ */
+int is_valid_integer(const char *str, unsigned int line_number)
+{
+	int i;
+
+	if (str == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (!isdigit(str[i]) && (i == 0 && str[i] != '-' && str[i] != '+'))
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	return (1);
+}
 
 /**
  *main - Entry point for the Monty interpreter.
@@ -43,6 +72,8 @@ int main(int argc, char *argv[])
 			if (strcmp(opcode, "push") == 0)
 			{
 				value_str = strtok(NULL, " \t\n");
+				if (!is_valid_integer(value_str, line_number)) {
+				 }
 				if (value_str == NULL)
 				{
 					fprintf(stderr, "L%u: usage: push integer\n", line_number);
