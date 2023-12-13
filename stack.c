@@ -11,11 +11,6 @@ void push(stack_t **stack, unsigned int n)
 {
 	stack_t *new_node;
 	
-	if (!is_valid_integer(n))
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
