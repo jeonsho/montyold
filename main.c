@@ -68,6 +68,8 @@ void process_instruction(stack_t **stack,
 		my_div(stack, line_number);
 	else if (strcmp(opcode, "mul") == 0)
                 mul(stack, line_number);
+	else if (strcmp(opcode, "mod") == 0)
+                mod(stack, line_number);
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
