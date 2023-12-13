@@ -1,4 +1,3 @@
-
 #define _GNU_SOURCE
 #include "monty.h"
 #include <string.h>
@@ -51,19 +50,17 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	while ((read_line = getline(&line, &len, file)) != -1)
 	{
 		line_number++;
 		opcode = strtok(line, " $\t\n");
-		if (opcode != NULL && opcode[0] != '#')
+		if (opcode != NULL)
 		{
 			if (strcmp(opcode, "push") == 0)
 			{
