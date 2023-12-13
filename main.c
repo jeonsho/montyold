@@ -63,6 +63,8 @@ void process_instruction(stack_t **stack,
 		add(stack, line_number);
 	else if (strcmp(opcode, "nop") == 0)
 		nop(stack, line_number);
+	 else if (strcmp(opcode, "sub") == 0)
+                sub(stack, line_number);
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
@@ -88,7 +90,7 @@ void process_file(FILE *file, stack_t **stack)
 		opcode = strtok(line, " $\t\n");
 		if (opcode != NULL)
 		{
-			value_str = strtok(NULL, " \t\n");
+			value_str = strtok(NULL, " \t");
 			process_instruction(stack, opcode, value_str, line_number);
 		}
 	}
