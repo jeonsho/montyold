@@ -93,7 +93,7 @@ void process_file(FILE *file, stack_t **stack)
 	{
 		line_number++;
 		opcode = strtok(line, " $\t\n");
-		if (opcode != NULL)
+		if (opcode != NULL && opcode[0] != '#')
 		{
 			value_str = strtok(NULL, " ");
 			process_instruction(stack, opcode, value_str, line_number);
