@@ -16,14 +16,14 @@ int is_valid_integer(const char *str, unsigned int line_number)
 	int converted;
 	if (str == NULL)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	converted = atoi(str);
 	if (converted == 0 && str[0] != '0')
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 				 }
 				if (value_str == NULL)
 				{
-					fprintf(stderr, "L%u: usage: push integer\n", line_number);
+					fprintf(stderr, "L%d: usage: push integer\n", line_number);
 					exit(EXIT_FAILURE);
 				}
 
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 			}
 			else
 			{
-				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 				exit(EXIT_FAILURE);
 			}
 		}
