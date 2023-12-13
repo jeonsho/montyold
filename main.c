@@ -91,6 +91,10 @@ void process_file(FILE *file, stack_t **stack)
 			value_str = strtok(NULL, " \t\n");
 			process_instruction(stack, opcode, value_str, line_number);
 		}
+		else
+		{
+			return;
+		}
 	}
 
 	free(line);
