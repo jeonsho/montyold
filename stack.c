@@ -10,6 +10,7 @@
 void push(stack_t **stack, unsigned int n)
 {
 	stack_t *new_node;
+
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
