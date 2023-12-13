@@ -20,7 +20,7 @@ int is_valid_integer(const char *str, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	converted = atoi(str);
-	if (converted == 0)
+	if (converted == 0 && str[0] != '0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
