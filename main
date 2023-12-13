@@ -2,17 +2,16 @@
 #include "monty.h"
 #include <string.h>
 #include <stdio.h>
-
-int main(int argc, char *argv[]) {
-    FILE *file;
-    stack_t *stack = NULL;
-    char *line = NULL;
+int main(int argc, char *argv[])
+{
+	FILE *file;
+	    stack_t *stack = NULL;
+	    char *line = NULL;
     size_t len = 0;
-    ssize_t read_line;
+    ssize_t read_line = 1;
     char *opcode, *value_str;
 
     unsigned int line_number = 0;
-    
     if (argc != 2) {
         fprintf(stderr, "USAGE: monty file\n");
         exit(EXIT_FAILURE);
@@ -23,10 +22,10 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
         exit(EXIT_FAILURE);
     }
-
-    while ((read_line = getline(&line, &len, file)) != -1) {
+    read_line = getline(&line, &len, file);
+    while (read_line != -1) {
         line_number++;
-        opcode = strtok(line, " $\t\n");
+        opcode = strtok(line, " \t\n");
         if (opcode != NULL && opcode[0] != '#') {
             if (strcmp(opcode, "push") == 0) {
                 value_str = strtok(NULL, " \t\n");
@@ -50,6 +49,6 @@ int main(int argc, char *argv[]) {
     /* Free any allocated memory and clean up */
     free_stack(&stack);
 
-    return 0;
+    return (0);
 }
 
