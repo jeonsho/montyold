@@ -13,26 +13,22 @@
  */
 int is_valid_integer(const char *str, unsigned int line_number)
 {
-	int i;
-
+	int converted;
 	if (str == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	for (i = 0; str[i] != '\0'; i++)
+	converted = atoi(str);
+	if (converted == 0 && str[0] != '0')
 	{
-		if (!isdigit(str[i]) && (i == 0 && str[i] != '-' && str[i] != '+'))
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 
 	return (1);
 }
-
 /**
  *main - Entry point for the Monty interpreter.
  *@argc: Number of command-line arguments.
