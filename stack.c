@@ -1,53 +1,76 @@
 #include "monty.h"
 
-void push(stack_t **stack, unsigned int n) {
-	 stack_t *new_node;
-    /* Check if n is a valid integer */
-   /* if (!isdigit(n)) {
-        fprintf(stderr, "L%u: usage: push integer\n", n);
-        exit(EXIT_FAILURE);
-    }*/
+/**
+ *push - Adds a new node with the specified integer value to the top of the stack.
+ *@stack: A double pointer to the top of the stack.
+ *@n: An unsigned integer representing the value to be added to the stack.
+ *Return: nothing
+ */
 
-    /* Implement push logic */
-    new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL) {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
+void push(stack_t **stack, unsigned int n)
+{
+	stack_t * new_node;
+	/*Check if n is a valid integer */
+	/*if (!isdigit(n)) {
+	     fprintf(stderr, "L%u: usage: push integer\n", n);
+	     exit(EXIT_FAILURE);
+	 }*/
 
-    new_node->n = n;
-    new_node->prev = NULL;
-    new_node->next = *stack;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
-    if (*stack != NULL) {
-        (*stack)->prev = new_node;
-    }
+	new_node->n = n;
+	new_node->prev = NULL;
+	new_node->next = *stack;
 
-    *stack = new_node;
+	if (*stack != NULL)
+	{
+		(*stack)->prev = new_node;
+	}
+
+	*stack = new_node;
 }
 
-void pall(stack_t **stack, unsigned int line_number) {
-    /* Implement pall logic */
-    stack_t *current = *stack;
-    (void)line_number;
+/**
+ *pall - Prints all elements in the stack.
+ *@stack: A double pointer to the top of the stack.
+ *@line_number: Line number of the opcode (unused in this function).
+ *Return: nothing
+ */
 
-    while (current != NULL) {
-        printf("%d\n", current->n);
-        current = current->next;
-    }
+void pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+	(void) line_number;
+
+	while (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
+	}
 }
 
-void free_stack(stack_t **stack) {
-    /* Implement memory deallocation logic */
-    stack_t *current = *stack;
-    stack_t *next;
+/**
+ *free_stack - Frees the memory allocated for all nodes in the stack.
+ *@stack: A double pointer to the top of the stack.
+ *Return: nothing
+ */
 
-    while (current != NULL) {
-        next = current->next;
-        free(current);
-        current = next;
-    }
+void free_stack(stack_t **stack)
+{
+	stack_t *current = *stack;
+	stack_t * next;
 
-    *stack = NULL;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+
+	*stack = NULL;
 }
-
