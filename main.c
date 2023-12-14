@@ -1,6 +1,6 @@
 #define _GNU_SOURCE
 #include "monty.h"
-
+#include <limits.h>
 /**
  *is_valid_integer - Validates whether a string is a valid integer.
  *@str: The string to be validated.
@@ -12,20 +12,15 @@
  */
 int is_valid_integer(const char *str, unsigned int line_number)
 {
-	int converted;
+	 char *endptr;
+	 long converted = strtol(str, &endptr, 10);
 
-	if (str == NULL)
+	if (*endptr != '\0' || converted < INT_MIN || converted > INT_MAX)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	converted = atoi(str);
-	if (converted == 0 && str[0] != '0')
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
+/*	atoi(str);*/
 	return (1);
 }
 
