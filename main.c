@@ -12,18 +12,23 @@
  */
 int is_valid_integer(const char *str, unsigned int line_number)
 {
-	 char *endptr;
-	 long converted = strtol(str, &endptr, 10);
+	int converted;
 
-	if (*endptr != '\0' || converted < INT_MIN || converted > INT_MAX)
+	if (str == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-/*	atoi(str);*/
+
+	converted = atoi(str);
+	if (converted == 0 && str[0] != '0')
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
 	return (1);
 }
-
 /**
  *process_instruction - Processes an instruction based on opcode.
  *@stack: Pointer to the stack.
